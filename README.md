@@ -70,6 +70,14 @@ node ./bin/gltf-pipeline.js -i ./specs/data/boxTexturedUnoptimized/CesiumTexture
 |`--texcomp.<format>.bitrate`|The bitrate when using the pvrtc or astc formats. For pvrtc formats this value must be `2.0` or `4.0`.|No, default `2.0`|
 |`--texcomp.<format>.blockSize`|The block size for astc compression. Smaller block sizes result in higher bitrates. This value is ignored if `options.bitrate` is also set. Must be one of the following: `4x4`, `5x4`, `5x5`, `6x5`, `6x6`, `8x5`, `8x6`, `8x8`, `10x5`, `10x6`, `10x8`, `10x10`, `12x10`, `12x12`|No, default `8x8`|
 |`--texcomp.<format>.alphaBit`|Store a single bit for alpha. Only supported for etc2.|No, default `false`|
+|`--compressMeshes, -d`|Compress the geometries using mesh compression extension.|No, default `false`|
+|`--draco.compressionLevel`|Draco compression level [0-10], most is 10, least is 0.|No, default `7`|
+|`--draco.quantizePosition`|Quantization bits for position attribute when using Draco compression.|No, default `14`|
+|`--draco.quantizeNormal`|Quantization bits for normal attribute when using Draco compression.|No, default `10`|
+|`--draco.quantizeTexcoord`|Quantization bits for texture coordinate attribute when using Draco compression.|No, default `12`|
+|`--draco.quantizeColor`|Quantization bits for color attribute when using Draco compression.|No, default `8`|
+|`--draco.quantizeSkin`|Quantization bits for skinning attribute (joint indices and joint weights) when using Draco compression.|No, default `12`|
+|`--draco.unifiedQuantization`|Quantize positions of all primitives using the same quantization grid defined by the unified bounding box of all primitives. If this option is not set, quantization is applied on each primitive separately which can result in gaps appearing between different primitives.|No, default `false`|
 
 ## Build Instructions
 
