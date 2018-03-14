@@ -148,6 +148,19 @@ var argv = yargs
             describe: 'Quantize positions of all primitives using the same quantization grid defined by the unified bounding box of all primitives. If this option is not set, quantization is applied on each primitive separately which can result in gaps appearing between different primitives. Default is false.',
             type: 'boolean'
         },
+        'compressAnimations': {
+            alias: 'a',
+            describe: 'Compress the animations using Draco animation compression extension.',
+            type: 'boolean'
+        },
+        'dracoAnimation.quantizeTimestamps': {
+            describe: 'Quantization bits for timestamps attribute when using Draco animation compression. Default is 16.',
+            type: 'number'
+        },
+        'dracoAnimation.quantizeKeyframes': {
+            describe: 'Quantization bits for keyframes attributes when using Draco animation compression. Default is 16.',
+            type: 'number'
+        },
     }).parse(args);
 
 var inputPath = argv.input;
@@ -184,6 +197,7 @@ if (outputExtension !== '.gltf' && outputExtension !== '.glb') {
 var i;
 var texcompOptions;
 var dracoOptions;
+var dracoAnimationOptions;
 var length = args.length;
 for (i = 0; i < length; ++i) {
     var arg = args[i];
@@ -192,6 +206,9 @@ for (i = 0; i < length; ++i) {
     }
     if (arg.indexOf('draco') >= 0) {
         dracoOptions = argv.draco;
+    }
+    if (arg.indexOf('dracoAnimation') >= 0) {
+        dracoAnimationOptions = argv.dracoAnimation;
     }
 }
 
@@ -221,6 +238,8 @@ var options = {
     textureCompressionOptions : textureCompressionOptions,
     compressMeshes: argv.compressMeshes,
     dracoOptions: dracoOptions,
+    compressAnimations: argv.compressAnimations,
+    dracoAnimationOptions: dracoAnimationOptions
 };
 
 var inputIsBinary = inputExtension === '.glb';
