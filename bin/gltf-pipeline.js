@@ -132,6 +132,10 @@ var argv = yargs
         'dracoAnimation.quantizeKeyframes': {
             describe: 'Quantization bits for keyframes attributes when using Draco animation compression. Default is 16.',
             type: 'number'
+        },
+        'dracoAnimation.outputPlyDirectory': {
+            describe: 'Output directory for ply files.',
+            type: 'string'
         }
     }).parse(args);
 
