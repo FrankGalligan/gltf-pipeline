@@ -79,6 +79,11 @@ var argv = yargs
             type: 'boolean',
             default: defaults.stats
         },
+        'draco.decompressMeshes': {
+            describe: 'Decompress the meshes using Draco',
+            type: 'boolean',
+            default: false
+        },
         'draco.compressMeshes': {
             alias: 'd',
             describe: 'Compress the meshes using Draco. Adds the KHR_draco_mesh_compression extension.',
