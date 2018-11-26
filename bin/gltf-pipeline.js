@@ -119,7 +119,12 @@ var argv = yargs
             describe: 'Quantize positions of all primitives using the same quantization grid defined by the unified bounding box of all primitives. If this option is not set, quantization is applied on each primitive separately which can result in gaps appearing between different primitives.',
             type: 'boolean',
             default: dracoDefaults.unifiedQuantization
-        }
+        },
+        'draco.gltf2ObjDirectory': {
+            describe: 'Directory to output Obj files. Must encode with Draco to output Obj files.',
+            type: 'string',
+            default: '.'
+        },
     }).parse(args);
 
 var inputPath = argv.input;
