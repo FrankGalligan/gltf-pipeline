@@ -125,6 +125,16 @@ var argv = yargs
             type: 'string',
             default: '.'
         },
+        'draco.gltf2ObjPrefix': {
+            describe: 'Prefix for Obj filenames.',
+            type: 'string',
+            default: ''
+        },
+        'draco.gltf2ObjOutputOneObj': {
+            describe: 'Option to output all meshes and primitives as one Obj file.',
+            type: 'boolean',
+            default: 'false'
+        }
     }).parse(args);
 
 var inputPath = argv.input;
